@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>上传作业</title>
+    <title>我要请假</title>
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <!-- Bootstrap -->
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -14,6 +14,7 @@
     <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <link href="js/libs/file-input/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="js/libs/datetimepicker/css/bootstrap-datetimepicker.min.css" media="all" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <!--导航-->
@@ -36,9 +37,9 @@
         <div class="collapse navbar-collapse" id="nav-content">
             <ul class="nav navbar-nav navbar-left">
                 <li  ><a href="user-info.html" ><span class="glyphicon glyphicon-user"></span> 个人信息 </a></li>
-                <li class="active"><a href="user-homework.html" ><span class="glyphicon glyphicon-tasks"></span> 作业</a></li>
+                <li ><a href="user-homework.html" ><span class="glyphicon glyphicon-tasks"></span> 作业</a></li>
                 <li><a href="user-discuss-lession.html" ><span class="glyphicon glyphicon-comment"></span> 研讨课</a></li>
-                <li ><a href="user-leave.html" ><span class="glyphicon glyphicon-tags "></span> 请假</a></li>
+                <li class="active"><a href="user-leave.html" ><span class="glyphicon glyphicon-tags "></span> 请假</a></li>
                 <li><a href="user-exam.html"><span class="glyphicon glyphicon-bookmark"></span> 考试</a></li>
             </ul>
 
@@ -64,10 +65,10 @@
     <div class="row">
         <div class="col-md-2">
             <div class="list-group">
-                <a href="user-homework.html" class="list-group-item ">
-                    我的作业
+                <a href="user-leave.html" class="list-group-item ">
+                    我的请假
                 </a>
-                <a href="user-homework-upload.html" class="list-group-item active">上传作业</a>
+                <a href="user-leave-submit.html" class="list-group-item active">我要请假</a>
             </div>
         </div>
         <div class="col-md-10">
@@ -75,7 +76,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">
-                        上传作业
+                        请假条
                     </h3>
                 </div>
                 <div class="panel-body">
@@ -83,15 +84,20 @@
                         <div class="col-md-12">
                             <form class="form-horizontal">
                                 <div class="form-group">
-                                    <label   class="col-sm-2 control-label">作业名称 </label>
+                                    <label  class="col-sm-2 control-label">请假时间</label>
                                     <div class="col-sm-10">
-                                        <input type="type" class="form-control"  placeholder="作业">
+                                        <div class="input-group date form_date  " data-date="" data-date-format="yyyy-MM-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                                            <input class="form-control" size="16" type="text" value="" readonly>
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                        </div>
+                                        <input type="hidden" id="dtp_input2" value="" /><br/>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label  class="col-sm-2 control-label">作业描述</label>
+                                    <label  class="col-sm-2 control-label">请假原因</label>
                                     <div class="col-sm-10">
-                                        <textarea rows="3" class="form-control" placeholder="作业描述"></textarea>
+                                        <textarea rows="3" class="form-control" placeholder="请假原因"></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -102,7 +108,7 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-10">
-                                        <button type="submit" class="btn btn-primary">上传</button>
+                                        <button type="submit" class="btn btn-primary">提交</button>
                                     </div>
                                 </div>
                             </form>
@@ -120,6 +126,9 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="js/libs/file-input/js/fileinput.min.js"></script>
 <script src="js/libs/file-input/js/fileinput_locale_zh.js"></script>
+<script type="text/javascript" src="js/libs/datetimepicker/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+<script type="text/javascript" src="js/libs/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+
 <script>
     $(function(){
         //初始化上传控件
@@ -129,6 +138,17 @@
             allowedFileExtensions: ["jpg", "png", "gif","doc","docx"],
             maxImageWidth: 250,
             maxImageHeight: 250
+        });
+        //时间控件
+        $('.form_date').datetimepicker({
+            language:  'zh-CN',
+            weekStart: 1,
+            todayBtn:  1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            minView: 2,
+            forceParse: 0
         });
     });
 
