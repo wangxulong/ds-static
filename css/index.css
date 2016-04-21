@@ -49,7 +49,7 @@
 /*teacher*/
 #teacher{
     text-align: center;
-    margin-top:30px;
+     padding :50px 0px;
 }
 #teacher  img{
     width:120px;
@@ -63,6 +63,16 @@
     background: #2E8839;
     color:#FFF;
 }
+/*outline*/
+#outline{
+    padding:50px 0px;
+    background: #eee;
+    text-align: center;
+}
+#outline img{
+    display: inline-block;
+}
+
 
 /*footer*/
 #footer{
